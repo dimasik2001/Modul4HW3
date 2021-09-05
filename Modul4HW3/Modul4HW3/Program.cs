@@ -15,11 +15,6 @@ namespace Modul4HW3
             var option = optionsBuilder.UseSqlServer(config.ConnectionString).Options;
             using (var db = new ApplicationContext(option))
             {
-                /*creator.InsertOffices(db);
-                creator.InsertTitles(db);
-                creator.InsertEmployees(db);
-                creator.InsertProjects(db);
-                creator.InsertEmployeeProject(db);*/
                 var office = db.Offices.FirstOrDefault(t => t.Title == "Zavod");
                 var res1 = db.Employees.FirstOrDefault(t => t.Office == office);
                 var project = db.Projects.FirstOrDefault(t => t.Name == "antivirus");
