@@ -11,24 +11,20 @@ namespace Modul4HW3
         {
             var config = new ConfigService();
             var creator = new EntityInsertService();
-            var offices = creator.GetOffices();
-            var optionsBuilder = new DbContextOptionsBuilder<AppContext>();
+            var optionsBuilder = new DbContextOptionsBuilder<ApplicationContext>();
             var option = optionsBuilder.UseSqlServer(config.ConnectionString).Options;
-            using (var db = new AppContext(option))
+            using (var db = new ApplicationContext(option))
             {
-                db.Titles.AddRange(creator.GetTitles());
-                db.SaveChanges();
-                db.Offices.AddRange(creator.GetOffices());
-                db.SaveChanges();
-                db.Projects.AddRange(creator.GetProjects());
-                db.SaveChanges();
-                db.Employees.AddRange(creator.GetEmployees());
-                db.SaveChanges();
-                db.EmployeeProject.AddRange(creator.GetEmployeeProject());
-                db.SaveChanges();
+                /*creator.InsertOffices(db);
+                creator.InsertTitles(db);
+                creator.InsertEmployees(db);
+                creator.InsertProjects(db);
+                creator.InsertEmployeeProject(db);*/
                 var office = db.Offices.FirstOrDefault(t => t.Title == "Zavod");
-                var r = db.Employees.FirstOrDefault(t => t.Office == office);
-                Console.WriteLine(r.LastName);
+                var res1 = db.Employees.FirstOrDefault(t => t.Office == office);
+                var project = db.Projects.FirstOrDefault(t => t.Name == "antivirus");
+                var res2 = db.Clients.FirstOrDefault(t => t.Projects.Contains(project));
+                Console.WriteLine(res2.LastName);
             }
 
             Console.WriteLine("done");

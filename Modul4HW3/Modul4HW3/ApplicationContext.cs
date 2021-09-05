@@ -9,13 +9,11 @@ using Modul4HW3.Entities.Configurations;
 
 namespace Modul4HW3
 {
-    public class AppContext : DbContext
+    public class ApplicationContext : DbContext
     {
-        public AppContext(DbContextOptions<AppContext> options)
+        public ApplicationContext(DbContextOptions<ApplicationContext> options)
             : base(options)
         {
-            Database.EnsureDeleted();
-            Database.EnsureCreated();
         }
 
         public DbSet<Employee> Employees { get; set; }
@@ -23,6 +21,7 @@ namespace Modul4HW3
         public DbSet<Title> Titles { get; set; }
         public DbSet<Project> Projects { get; set; }
         public DbSet<EmployeeProject> EmployeeProject { get; set; }
+        public DbSet<Client> Clients { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new EmployeeConfiguration());
@@ -30,6 +29,7 @@ namespace Modul4HW3
             modelBuilder.ApplyConfiguration(new OfficeConfiguration());
             modelBuilder.ApplyConfiguration(new ProjectConfiguration());
             modelBuilder.ApplyConfiguration(new TitleConfiguration());
+            modelBuilder.ApplyConfiguration(new ClientConfiguration());
         }
     }
 }
