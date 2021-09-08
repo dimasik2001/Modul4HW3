@@ -9,15 +9,14 @@ using Modul4HW3.Services;
 
 namespace Modul4HW3
 {
-    public class ContextFactory : IDesignTimeDbContextFactory<AppContext>
+    public class ContextFactory : IDesignTimeDbContextFactory<ApplicationContext>
     {
-        public AppContext CreateDbContext(string[] args)
+        public ApplicationContext CreateDbContext(string[] args)
         {
             var config = new ConfigService();
-            var optionsBuilder = new DbContextOptionsBuilder<AppContext>();
+            var optionsBuilder = new DbContextOptionsBuilder<ApplicationContext>();
             optionsBuilder.UseSqlServer(config.ConnectionString);
-
-            return new AppContext(optionsBuilder.Options);
+            return new ApplicationContext(optionsBuilder.Options);
         }
     }
 }

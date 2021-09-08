@@ -9,9 +9,9 @@ using Modul4HW3;
 
 namespace Modul4HW3.Migrations
 {
-    [DbContext(typeof(AppContext))]
-    [Migration("20210902074337_test")]
-    partial class Test
+    [DbContext(typeof(ApplicationContext))]
+    [Migration("20210905134806_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
