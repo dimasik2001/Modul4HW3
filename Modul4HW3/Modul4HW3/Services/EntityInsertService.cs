@@ -294,6 +294,19 @@ namespace Modul4HW3.Services
             };
         }
 
+        public Employee GetEmployeeSample()
+        {
+            return new Employee
+            {
+                FirstName = "Test",
+                LastName = "Testov",
+                DateOfBirth = new DateTime(1986, 5, 4),
+                HiredDate = new DateTime(2020, 1, 30),
+                OfficeId = 1,
+                TitleId = 1
+            };
+        }
+
         private void InsertIn<T>(DbContext context, IEnumerable<T> entities)
         {
             foreach (var item in entities)

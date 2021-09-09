@@ -13,7 +13,7 @@ namespace Modul4HW3.Entities
         public decimal Budget { get; set; }
         public DateTime StartedDate { get; set; }
         public int ClientId { get; set; }
-        public List<EmployeeProject> EmployeeProject { get; set; } = new List<EmployeeProject>();
-        public Client Client { get; set; }
+        public virtual List<EmployeeProject> EmployeeProject { get; set; } = new List<EmployeeProject>();
+        public virtual Client Client { get; set; }
     }
 }
